@@ -1,0 +1,22 @@
+.infoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cover {
+  width: 256px;
+  height: auto;
+  border-radius: 30px;
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+
+.songArtist {
+  text-align: center;
+  font-weight: 700;
+}
+
+.songTitle {
+  text-align: center;
+}

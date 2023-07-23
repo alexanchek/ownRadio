@@ -1,24 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// COMPONENTS
+import { HeaderMenu } from './components/HeaderMenu';
+import { ManagedButtons } from './components/ManagedButtons';
+import { TrackInfo } from './components/TrackInfo';
+import { Player } from './components/Player';
 
-function App() {
+import { usePlayerContext } from './Context';
+import { useEffect } from 'react';
+import { streams } from './streams';
+import './App.css';
+import { Status } from './components/Status';
+import { Sidebar } from './components/Sidebar';
+
+const App = () => {
+  const { setCurrentStream } = usePlayerContext();
+
+  useEffect(() => {
+    setCurrentStream(streams[0]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <Sidebar />
+        <HeaderMenu />
+        <div className="container">
+          <TrackInfo />
+          <ManagedButtons />
+          <Status />
+          <Player />
+        </div>
+
     </div>
   );
 }
