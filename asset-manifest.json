@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "./static/css/main.bcf01943.css",
-    "main.js": "./static/js/main.c1440173.js",
-    "static/media/radioMaximum.jpg": "./static/media/radioMaximum.8c7c4bc17c6b8076c93d.jpg",
-    "static/media/radioGelosa.jpg": "./static/media/radioGelosa.fad01690044f4356b9d0.jpg",
-    "static/media/radioUltra.jpg": "./static/media/radioUltra.7e6f5ff1465db3631394.jpg",
-    "index.html": "./index.html",
-    "main.bcf01943.css.map": "./static/css/main.bcf01943.css.map",
-    "main.c1440173.js.map": "./static/js/main.c1440173.js.map"
+    "main.css": "/ownRadio/static/css/main.bcf01943.css",
+    "main.js": "/ownRadio/static/js/main.ae77f7de.js",
+    "static/media/radioMaximum.jpg": "/ownRadio/static/media/radioMaximum.8c7c4bc17c6b8076c93d.jpg",
+    "static/media/radioGelosa.jpg": "/ownRadio/static/media/radioGelosa.fad01690044f4356b9d0.jpg",
+    "static/media/radioUltra.jpg": "/ownRadio/static/media/radioUltra.7e6f5ff1465db3631394.jpg",
+    "index.html": "/ownRadio/index.html",
+    "main.bcf01943.css.map": "/ownRadio/static/css/main.bcf01943.css.map",
+    "main.ae77f7de.js.map": "/ownRadio/static/js/main.ae77f7de.js.map"
   },
   "entrypoints": [
     "static/css/main.bcf01943.css",
-    "static/js/main.c1440173.js"
+    "static/js/main.ae77f7de.js"
   ]
 }
