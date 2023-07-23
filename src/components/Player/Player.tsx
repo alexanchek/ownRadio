@@ -17,13 +17,11 @@ const Player: FC<IPlayer> = () => {
 
       playerRef.current.addEventListener('play', () => {
         setIsPlaying(true);
-        //@ts-ignore
-        AndroidInterface.showToast(`Загружаем "${currentStream?.name}"`);
-      })
+      });
 
       playerRef.current.addEventListener('pause', () => {
         setIsPlaying(false);
-      })
+      });
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [playerRef, setIsLoading])

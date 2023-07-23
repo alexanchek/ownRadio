@@ -1,5 +1,5 @@
 {
-  "homepage": ".",
+  "homepage": "https://alexanchek.github.io/ownRadio",
   "name": "radio",
   "version": "0.1.0",
   "private": true,
@@ -13,6 +13,7 @@
     "@types/react-burger-menu": "^2.8.3",
     "@types/react-dom": "^18.2.7",
     "classnames": "^2.3.2",
+    "gh-pages": "^5.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.10.1",
@@ -27,6 +28,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "deploy": "gh-pages -d build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
