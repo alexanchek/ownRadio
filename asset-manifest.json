@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/ownRadio/static/css/main.bcf01943.css",
-    "main.js": "/ownRadio/static/js/main.05eadd66.js",
-    "static/media/radioMaximum.jpg": "/ownRadio/static/media/radioMaximum.8c7c4bc17c6b8076c93d.jpg",
+    "main.js": "/ownRadio/static/js/main.e204d9c3.js",
+    "static/media/radioMaximum.jpg": "/ownRadio/static/media/radioMaximum.7cf2694353669cb2d546.jpg",
     "static/media/radioGelosa.jpg": "/ownRadio/static/media/radioGelosa.f3a32ddd76b8a14ec715.jpg",
     "static/media/radioUltra.jpg": "/ownRadio/static/media/radioUltra.7e6f5ff1465db3631394.jpg",
     "index.html": "/ownRadio/index.html",
     "main.bcf01943.css.map": "/ownRadio/static/css/main.bcf01943.css.map",
-    "main.05eadd66.js.map": "/ownRadio/static/js/main.05eadd66.js.map"
+    "main.e204d9c3.js.map": "/ownRadio/static/js/main.e204d9c3.js.map"
   },
   "entrypoints": [
     "static/css/main.bcf01943.css",
-    "static/js/main.05eadd66.js"
+    "static/js/main.e204d9c3.js"
   ]
 }
