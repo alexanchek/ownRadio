@@ -10,12 +10,20 @@ import { streams } from './streams';
 import './App.css';
 import { Status } from './components/Status';
 import { Sidebar } from './components/Sidebar';
+import { localStorageService } from './services/localStorage.service';
 
 const App = () => {
   const { setCurrentStream } = usePlayerContext();
 
   useEffect(() => {
-    setCurrentStream(streams[0]);
+    if (!localStorageService.getItem()) {
+      setCurrentStream(streams[0]);
+      localStorageService.setItem(streams[0].name);
+    } else {
+      const streamFromStorage = localStorageService.getItem();
+      const currentStream = streams.find(stream => stream.name === streamFromStorage);
+      setCurrentStream(currentStream ?? streams[0]);
+    } 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
