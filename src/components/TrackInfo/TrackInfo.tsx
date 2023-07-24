@@ -18,6 +18,16 @@ const TrackInfo = () => {
       if (currentStream && currentStream.titleUrl) {
         const data = await currentStream.titleUrl();
         setTrackInfo(data);
+
+        console.log(navigator.mediaSession);
+
+        if ("mediaSession" in navigator) {
+          navigator.mediaSession.metadata = new MediaMetadata({
+            artist: data?.artist ? data.artist : 'Сашкино радио',
+            title: data?.title ? data.title : '',
+            // artwork: data?.cover ? data.cover : undefined,
+          });
+        }
       }
     }
 
@@ -29,6 +39,11 @@ const TrackInfo = () => {
   } else if (currentStream?.name !== intervalStream?.name) {
     clearInterval(interval);
     setTrackInfo(null);
+
+    if ("mediaSession" in navigator) {
+      navigator.mediaSession.metadata = new MediaMetadata({});
+    }
+
     setIntervalStream(currentStream);
     interval = setInterval(() => {
       getTitle();
