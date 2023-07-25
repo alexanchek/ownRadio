@@ -11,9 +11,15 @@ import './App.css';
 import { Status } from './components/Status';
 import { Sidebar } from './components/Sidebar';
 import { localStorageService } from './services/localStorage.service';
+import { disableReactDevTools } from './utils/disableDevTools';
+
 
 const App = () => {
   const { setCurrentStream } = usePlayerContext();
+
+  if (process.env.NODE_ENV !== 'development') {
+    disableReactDevTools();
+  }
 
   useEffect(() => {
     if (!localStorageService.getItem()) {
