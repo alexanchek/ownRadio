@@ -41,6 +41,9 @@ const TrackInfo = () => {
     clearInterval(interval);
     setTrackInfo(null);
     setIntervalStream(currentStream);
+    interval = setInterval(() => {
+      getTitle();
+    }, 5000);
 
     if ("mediaSession" in navigator) {
       navigator.mediaSession.metadata = new MediaMetadata({});
