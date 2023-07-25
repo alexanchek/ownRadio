@@ -7,14 +7,14 @@ import styles from './TrackInfo.module.scss';
 let interval: any = null;
 
 const TrackInfo = () => {
-  const { currentStream } =usePlayerContext();
+  const { currentStream } = usePlayerContext();
   const [intervalStream, setIntervalStream] = useState<IStream | null>(null);
   const [trackInfo, setTrackInfo] = useState<ISong | null>(null);
 
   useEffect(() => {
-    const getTitle = async() => {
+    const getTitle = async () => {
       console.log('interval', currentStream?.name);
-      
+
       if (currentStream && currentStream.titleUrl) {
         const data = await currentStream.titleUrl();
         setTrackInfo(data);
@@ -23,40 +23,45 @@ const TrackInfo = () => {
           navigator.mediaSession.metadata = new MediaMetadata({
             artist: data?.artist ? data.artist : 'Сашкино радио',
             title: data?.title ? data.title : '',
-            artwork: data?.cover ? [{
-              src: data.cover,
-
-            }] : undefined,
+            artwork: data?.cover
+              ? [{ src: data.cover }]
+              : undefined,
           });
         }
       }
     }
 
-  if (!interval && intervalStream?.name !== currentStream?.name) {
-    setIntervalStream(currentStream);
-    interval = setInterval(() => {
-      getTitle();
-    }, 5000);
-  } else if (currentStream?.name !== intervalStream?.name) {
-    clearInterval(interval);
-    setTrackInfo(null);
-    setIntervalStream(currentStream);
-    interval = setInterval(() => {
-      getTitle();
-    }, 5000);
+    if (!interval && intervalStream?.name !== currentStream?.name) {
+      setIntervalStream(currentStream);
+      interval = setInterval(() => {
+        getTitle();
+      }, 5000);
+    } else if (currentStream?.name !== intervalStream?.name) {
+      clearInterval(interval);
+      setTrackInfo(null);
+      setIntervalStream(currentStream);
+      interval = setInterval(() => {
+        getTitle();
+      }, 5000);
 
-    if ("mediaSession" in navigator) {
-      navigator.mediaSession.metadata = new MediaMetadata({});
+      if ("mediaSession" in navigator) {
+        navigator.mediaSession.metadata = new MediaMetadata({});
+      }
     }
-  }
   }, [currentStream, intervalStream]);
+
+  useEffect(() => {
+    return () => {
+      interval = null;
+    }
+  }, [])
 
   return (
     <div className={styles.infoContainer}>
-      <img src={trackInfo?.cover ? trackInfo?.cover :  currentStream?.cover} alt='cover' className={styles.cover} />
+      <img src={trackInfo?.cover ? trackInfo?.cover : currentStream?.cover} alt='cover' className={styles.cover} />
       <div>
         <div className={styles.songArtist}>{trackInfo?.artist ? trackInfo.artist : currentStream?.name}</div>
-        <div className={styles.songTitle}>{ trackInfo?.title ? trackInfo.title : currentStream?.extra} </div>
+        <div className={styles.songTitle}>{trackInfo?.title ? trackInfo.title : currentStream?.extra} </div>
       </div>
     </div>
   );

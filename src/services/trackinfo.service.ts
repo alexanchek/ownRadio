@@ -1,24 +1,12 @@
 import axios from "axios";
+
+// INTERFACES
+import { IGelosaTrackInfo } from "../models/radiostreamsData/radioGelosa.interface";
+import { IMaximumTrackInfo } from "../models/radiostreamsData/radioMaximum.interface";
+import { IUltraInfo } from "../models/radiostreamsData/radioUltra.interface";
 import { ISong } from "../models/song.interface";
 
-interface IMaximumTrackInfo {
-  artist: string;
-  title: string;
-  time: string;
-  date: string;
-}
-
-interface IGelosaTrackInfo {
- trackId: string;
- artistName: string;
- trackName: string;
- artworkUrl1000: string;
- isSong: boolean;
- trackViewUrl: string;
- previewUrl: string;
-}
-
-export const getGelosaInfo = async ():Promise<ISong | null> => {
+export const getGelosaInfo = async (): Promise<ISong | null> => {
   try {
     const { data } = await axios.get<IGelosaTrackInfo>('https://titoli.fluidstream.it/klasseuno/onair_gelosa.json');
     return { artist: data.artistName, title: data.trackName, cover: data.artworkUrl1000 };
@@ -27,7 +15,7 @@ export const getGelosaInfo = async ():Promise<ISong | null> => {
   }
 };
 
-export const getMaximumInfo = async (): Promise<ISong | null>  => {
+export const getMaximumInfo = async (): Promise<ISong | null> => {
   try {
     const { data } = await axios.get<IMaximumTrackInfo>('https://meta.pcradio.ru/fm_maximum_current.json');
     return { artist: data.artist, title: data.title, cover: null };
@@ -36,10 +24,11 @@ export const getMaximumInfo = async (): Promise<ISong | null>  => {
   }
 };
 
-export const getUltraInfo = async () => {
+export const getUltraInfo = async (): Promise<ISong | null> => {
   try {
-
+    const { data } = await axios.get<IUltraInfo>('https://meta.fmgid.com/stations/ultra/current.json');
+    return { artist: data.artist, title: data.title, cover: `https://meta.fmgid.com/100x100/stations/ultra/${data.cover}`, };
   } catch (e: any) {
-
+    return null;
   }
 }
