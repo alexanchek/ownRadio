@@ -1,5 +1,4 @@
-import { FC, useCallback } from 'react';
-import { IManagedButtons } from './ManagedButtons.interface';
+import { useCallback } from 'react';
 
 // ICONS
 import {
@@ -14,7 +13,7 @@ import { usePlayerContext } from '../../Context';
 import { streams } from '../../streams';
 import { localStorageService } from '../../services/localStorage.service';
 
-const ManagedButtons: FC<IManagedButtons> = () => {
+const ManagedButtons = () => {
   const { isPlaying, setIsPlaying, currentStream, setCurrentStream, setIsLoading, } = usePlayerContext();
 
   const onClickBackward = useCallback(() => {

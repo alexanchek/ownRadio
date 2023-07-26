@@ -1,9 +1,7 @@
-import { FC } from 'react';
 import { usePlayerContext } from '../../Context';
-import { IHeaderMenu } from './HeaderMenu.interface';
 import styles from './HeaderMenu.module.scss';
 
-const HeaderMenu: FC<IHeaderMenu> = () => {
+const HeaderMenu = () => {
   const { currentStream } = usePlayerContext();
 
   return (

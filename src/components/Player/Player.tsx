@@ -1,9 +1,8 @@
-import { FC, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { usePlayerContext } from '../../Context';
-import { IPlayer } from './Player.interface';
 import styles from './Player.module.scss';
 
-const Player: FC<IPlayer> = () => {
+const Player = () => {
   const playerRef = useRef<HTMLAudioElement | null>(null);
 
   const { isPlaying, currentStream, setIsLoading, setIsPlaying, } = usePlayerContext();
