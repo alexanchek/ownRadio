@@ -27,6 +27,7 @@ export const getMaximumInfo = async (): Promise<ISong | null> => {
 export const getUltraInfo = async (): Promise<ISong | null> => {
   try {
     const { data } = await axios.get<IUltraInfo>('https://meta.fmgid.com/stations/ultra/current.json');
+    console.log(`https://meta.fmgid.com/100x100/stations/ultra/${data.cover}`)
     return { artist: data.artist, title: data.title, cover: `https://meta.fmgid.com/100x100/stations/ultra/${data.cover}`, };
   } catch (e: any) {
     return null;
