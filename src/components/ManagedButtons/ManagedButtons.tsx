@@ -16,6 +16,39 @@ import { localStorageService } from '../../services/localStorage.service';
 const ManagedButtons = () => {
   const { isPlaying, setIsPlaying, currentStream, setCurrentStream, setIsLoading, } = usePlayerContext();
 
+  
+  if ('mediaSession' in navigator) {
+    navigator.mediaSession.setActionHandler('nexttrack', () => {
+      const findedIndex = streams.findIndex(stream => stream.name === currentStream?.name );
+    
+      setIsLoading(true);
+      if (findedIndex === streams.length - 1) {
+        const stream = streams[0];
+        setCurrentStream(stream);
+        localStorageService.setItem(stream.name);
+      } else {
+        const stream = streams[findedIndex + 1];
+        setCurrentStream(stream);
+        localStorageService.setItem(stream.name);
+      }
+    })
+
+    navigator.mediaSession.setActionHandler('previoustrack', () => {
+      const findedIndex = streams.findIndex(stream => stream.name === currentStream?.name );
+    
+      setIsLoading(true);
+      if (findedIndex === 0) {
+        const stream = streams[streams.length - 1]
+        setCurrentStream(stream);
+        localStorageService.setItem(stream.name);
+      } else {
+        const stream = streams[findedIndex - 1];
+        setCurrentStream(stream);
+        localStorageService.setItem(stream.name);
+      }
+    });
+  }
+
   const onClickBackward = useCallback(() => {
     const findedIndex = streams.findIndex(stream => stream.name === currentStream?.name );
     

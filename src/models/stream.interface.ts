@@ -5,5 +5,6 @@ export interface IStream {
   url: string;
   cover: string;
   extra: string;
+  coverType?: 'image/png' | 'image/jpg';
   titleUrl?: () => Promise<ISong | null>;
 }

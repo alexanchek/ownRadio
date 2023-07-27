@@ -9,7 +9,7 @@
   & > div {
     margin-bottom: 50px;
     padding: 10px;
-    border: 1px white solid;
+    border: 3px white solid;
     border-radius: 10px;
 
     &:last-child {
@@ -20,7 +20,7 @@
 
 .stream {
   &.active {
-    border: 1px aquamarine solid;
+    border: 3px aquamarine solid;
   }
 }
 

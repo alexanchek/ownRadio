@@ -11,6 +11,9 @@ const TrackInfo = () => {
   const [intervalStream, setIntervalStream] = useState<IStream | null>(null);
   const [trackInfo, setTrackInfo] = useState<ISong | null>(null);
 
+  const mediadata = new MediaMetadata();
+
+
   useEffect(() => {
     const getTitle = async () => {
       console.log('interval', currentStream?.name);
@@ -20,14 +23,16 @@ const TrackInfo = () => {
         setTrackInfo(data);
 
         if ("mediaSession" in navigator) {
-          navigator.mediaSession.metadata = new MediaMetadata({
+          if (intervalStream?.name !== currentStream?.name) {
+            navigator.mediaSession.metadata = new MediaMetadata({
             artist: data?.artist ? data.artist : 'Сашкино радио',
             title: data?.title ? data.title : '',
             artwork: data?.cover
-              ? [{ src: data.cover }]
+              ? [{ src: data.cover, sizes: '256x256', type: 'image/jpg' }]
               : [{ src: currentStream.cover }],
           });
         }
+          }
       }
     }
 
@@ -48,8 +53,9 @@ const TrackInfo = () => {
         navigator.mediaSession.metadata = new MediaMetadata({
           artist: 'Сашкино радио',
           title: '',
+          album: '',
           artwork: [{ src: currentStream!.cover }],
-        })
+        });
       }
     }
   }, [currentStream, intervalStream]);

@@ -32,7 +32,7 @@ export const getUltraInfo = async (): Promise<ISong | null> => {
         t,
       }
     });
-    return { artist: data.artist, title: data.title, cover: `https://meta.fmgid.com/100x100/stations/ultra/${data.cover}`, };
+    return { artist: data.artist, title: data.title, cover: `https://meta.fmgid.com/600x600/stations/ultra/${data.cover}`, coverType: 'image/jpg'  };
   } catch (e: any) {
     return null;
   }

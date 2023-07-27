@@ -4,7 +4,8 @@
   align-items: center;
   height: calc(100vh - 40px);
   padding: 20px 0;
-  background-color: #282c34;
+  background: rgb(43,88,118);
+  background: linear-gradient(90deg, rgba(43,88,118,1) 0%, rgba(78,67,118,1) 100%);
   color: white;
   position: relative;
 }
