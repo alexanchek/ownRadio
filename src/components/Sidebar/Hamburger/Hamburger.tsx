@@ -1,4 +1,4 @@
-import { Dispatch, FC, SetStateAction, CSSProperties } from 'react';
+import { Dispatch, FC, SetStateAction } from 'react';
 import cn from 'classnames';
 import styles from './Hamburger.module.scss';
 
@@ -11,10 +11,6 @@ const Hamburger: FC<IHamburger> = ({
   isOpen,
   setIsOpen,
 }) => {
-  const style: CSSProperties = {
-    left: isOpen ? '60vw' : '3vw',
-  }
-
   return (
     <div
       className={cn(styles.hamburger, {

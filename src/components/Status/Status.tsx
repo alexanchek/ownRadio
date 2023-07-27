@@ -1,13 +1,13 @@
 import { usePlayerContext } from '../../Context';
-import './status.css';
+import styles from './status.module.scss';
 
 const Status = () => {
   const { isLoading, } = usePlayerContext();
 
   return (
-    <div className='status'>
+    <div className={styles.status}>
       {isLoading
-        ? (<div className="lds-ring">
+        ? (<div className={styles.ldsRing}>
           <div></div>
           <div></div>
           <div></div>

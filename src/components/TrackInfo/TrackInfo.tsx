@@ -11,9 +11,6 @@ const TrackInfo = () => {
   const [intervalStream, setIntervalStream] = useState<IStream | null>(null);
   const [trackInfo, setTrackInfo] = useState<ISong | null>(null);
 
-  const mediadata = new MediaMetadata();
-
-
   useEffect(() => {
     const getTitle = async () => {
       console.log('interval', currentStream?.name);
