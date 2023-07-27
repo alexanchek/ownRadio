@@ -17,8 +17,9 @@ const Hamburger: FC<IHamburger> = ({
 
   return (
     <div
-      className={styles.hamburger}
-      style={style}
+      className={cn(styles.hamburger, {
+        [styles.isOpen]: isOpen,
+      })}
       onClick={() => setIsOpen(!isOpen)}
     >
       <div className={cn({

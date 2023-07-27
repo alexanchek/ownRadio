@@ -2,8 +2,8 @@
   top: 0;
   left: 0;
   height: 100vh;
-  width: 75vw;
   position: fixed;
+  width: 20vw;
   background-color: #2b5876;
   z-index: 1;
   padding: 10rem 0;
@@ -16,6 +16,11 @@
   &.open {
     transform: translateX(0);
   }
+
+  @media screen and (max-width: 600px) {
+    width: 75vw;
+  }
+  
 }
 
 .menuContainer {
