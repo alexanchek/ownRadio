@@ -2,12 +2,15 @@ import { useEffect, useRef } from 'react';
 import { usePlayerContext } from '../../Context';
 import styles from './Player.module.scss';
 
+let interval = 0;
+
 const Player = () => {
   const playerRef = useRef<HTMLAudioElement | null>(null);
 
   const { isPlaying, currentStream, setIsLoading, setIsPlaying, } = usePlayerContext();
 
   useEffect(() => {
+    
     if (playerRef.current) {
       playerRef.current.addEventListener('canplaythrough', () => {
         setIsLoading(false);
@@ -28,6 +31,7 @@ const Player = () => {
   useEffect(() => {
     if (playerRef.current) {
       if (isPlaying && currentStream?.url) {
+        playerRef.current.src = currentStream?.url;
         playerRef.current.play();
       } else {
         playerRef.current.pause();
@@ -45,6 +49,7 @@ const Player = () => {
 
   return (
     <audio
+      id='audio'
       ref={playerRef}
       controls
       autoPlay
