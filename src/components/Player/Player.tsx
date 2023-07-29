@@ -8,11 +8,31 @@ const Player = () => {
   const { isPlaying, currentStream, setIsLoading, setIsPlaying, } = usePlayerContext();
 
   useEffect(() => {
+    if (playerRef.current) {
+      if (isPlaying && currentStream?.url) {
+        playerRef.current.src = currentStream.url;
+
+        // race between pause and play so we need to check it out to prevent a device from throwing the error
+        if (!playerRef.current.paused) playerRef.current.play();
+      } else {
+        playerRef.current.pause();
+        playerRef.current.src = '';
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isPlaying, playerRef, currentStream]);
+
+  useEffect(() => {
     
     if (playerRef.current) {
-      if (playerRef.current.readyState === 3) {
+      
+      if (!playerRef.current.paused) {
         setIsLoading(false);
       }
+
+      playerRef.current.addEventListener('canplaythrough', () => {
+        setIsLoading(false);
+      });
 
       playerRef.current.addEventListener('play', () => {
         setIsPlaying(true);
@@ -24,20 +44,6 @@ const Player = () => {
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [playerRef, setIsLoading, currentStream])
-
-  useEffect(() => {
-    if (playerRef.current) {
-      console.log(isPlaying, currentStream)
-      if (isPlaying && currentStream?.url) {
-        playerRef.current.src = currentStream.url;
-        playerRef.current.play();
-      } else {
-        playerRef.current.pause();
-        playerRef.current.src = '';
-      }
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isPlaying, playerRef, currentStream]);
 
   useEffect(() => {
     if (currentStream?.url) {

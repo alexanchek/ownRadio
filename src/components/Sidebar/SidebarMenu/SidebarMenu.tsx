@@ -7,12 +7,14 @@ import styles from './SidebarMenu.module.scss';
 import { localStorageService } from '../../../services/localStorage.service';
 
 const SidebarMenu: FC<{ setIsOpen: Dispatch<SetStateAction<boolean>> }> = ({ setIsOpen, }) => {
-  const { setCurrentStream, isPlaying, currentStream } = usePlayerContext();
+  const { setCurrentStream, isPlaying, currentStream, setIsPlaying, setIsLoading } = usePlayerContext();
 
   const onClick = useCallback((stream: IStream) => {
     setIsOpen(false);
     setCurrentStream(stream);
     localStorageService.setItem(stream.name);
+    setIsPlaying(true);
+    setIsLoading(true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isPlaying, currentStream, setIsOpen])
 
