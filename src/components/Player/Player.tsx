@@ -27,6 +27,7 @@ const Player = () => {
 
   useEffect(() => {
     if (playerRef.current) {
+      console.log(isPlaying, currentStream)
       if (isPlaying && currentStream?.url) {
         playerRef.current.src = currentStream.url;
         playerRef.current.play();

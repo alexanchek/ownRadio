@@ -4,14 +4,44 @@ import { useCallback } from 'react';
 import {
   FaCirclePlay,
   FaCirclePause,
-  FaBackward,
-  FaForward,
+  FaBackwardStep,
+  FaForwardStep,
 } from 'react-icons/fa6';
 
-import styles from './ManagedButtons.module.scss';
 import { usePlayerContext } from '../../Context';
 import { streams } from '../../streams';
 import { localStorageService } from '../../services/localStorage.service';
+import { IStream } from '../../models/stream.interface';
+
+import styles from './ManagedButtons.module.scss';
+
+const getNextStream = (currentStream: IStream) => {
+  const findedIndex = streams.findIndex(stream => stream.name === currentStream?.name );
+
+  if (findedIndex === streams.length - 1) {
+    const stream = streams[0];
+    localStorageService.setItem(stream.name);
+    return stream;
+  } else {
+    const stream = streams[findedIndex + 1];
+    localStorageService.setItem(stream.name);
+    return stream;
+  }
+}
+
+const getPrevStream = (currentStream: IStream) => {
+  const findedIndex = streams.findIndex(stream => stream.name === currentStream?.name );
+
+  if (findedIndex === 0) {
+    const stream = streams[streams.length - 1]
+    localStorageService.setItem(stream.name);
+    return stream;
+  } else {
+    const stream = streams[findedIndex - 1];
+    localStorageService.setItem(stream.name);
+    return stream;
+  }
+}
 
 const ManagedButtons = () => {
   const { isPlaying, setIsPlaying, currentStream, setCurrentStream, } = usePlayerContext();
@@ -19,61 +49,25 @@ const ManagedButtons = () => {
   
   if ('mediaSession' in navigator) {
     navigator.mediaSession.setActionHandler('nexttrack', () => {
-      const findedIndex = streams.findIndex(stream => stream.name === currentStream?.name );
-    
-      if (findedIndex === streams.length - 1) {
-        const stream = streams[0];
-        setCurrentStream(stream);
-        localStorageService.setItem(stream.name);
-      } else {
-        const stream = streams[findedIndex + 1];
-        setCurrentStream(stream);
-        localStorageService.setItem(stream.name);
-      }
+      const newStream =  getNextStream(currentStream!);
+      setCurrentStream(newStream);
     })
 
     navigator.mediaSession.setActionHandler('previoustrack', () => {
-      const findedIndex = streams.findIndex(stream => stream.name === currentStream?.name );
-    
-      if (findedIndex === 0) {
-        const stream = streams[streams.length - 1]
-        setCurrentStream(stream);
-        localStorageService.setItem(stream.name);
-      } else {
-        const stream = streams[findedIndex - 1];
-        setCurrentStream(stream);
-        localStorageService.setItem(stream.name);
-      }
+      const newStream =  getPrevStream(currentStream!);
+      setCurrentStream(newStream);
     });
   }
 
   const onClickBackward = useCallback(() => {
-    const findedIndex = streams.findIndex(stream => stream.name === currentStream?.name );
-    
-    if (findedIndex === 0) {
-      const stream = streams[streams.length - 1]
-      setCurrentStream(stream);
-      localStorageService.setItem(stream.name);
-    } else {
-      const stream = streams[findedIndex - 1];
-      setCurrentStream(stream);
-      localStorageService.setItem(stream.name);
-    }
+    const newStream = getPrevStream(currentStream!);
+    setCurrentStream(newStream);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentStream]);
 
   const onClickForward = useCallback(() => {
-    const findedIndex = streams.findIndex(stream => stream.name === currentStream?.name );
-    
-    if (findedIndex === streams.length - 1) {
-      const stream = streams[0];
-      setCurrentStream(stream);
-      localStorageService.setItem(stream.name);
-    } else {
-      const stream = streams[findedIndex + 1];
-      setCurrentStream(stream);
-      localStorageService.setItem(stream.name);
-    }
+    const newStream = getNextStream(currentStream!);
+    setCurrentStream(newStream);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentStream]);
 
@@ -82,7 +76,7 @@ const ManagedButtons = () => {
       <div
         onClick={onClickBackward}
       >
-        <FaBackward size={36} />
+        <FaBackwardStep size={36} />
       </div>
       <div onClick={() => {
         setIsPlaying(!isPlaying);
@@ -93,7 +87,7 @@ const ManagedButtons = () => {
       <div
         onClick={onClickForward}
       >
-        <FaForward size={36} />
+        <FaForwardStep size={36} />
       </div>
     </div>
   );
