@@ -14,9 +14,6 @@ const Player = () => {
         setIsLoading(false);
       }
 
-      console.log(playerRef.current.readyState)
-
-
       playerRef.current.addEventListener('play', () => {
         setIsPlaying(true);
       });
