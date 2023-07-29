@@ -22,8 +22,8 @@ const TrackInfo = () => {
         if ("mediaSession" in navigator) {
           if (intervalStream?.name !== currentStream?.name) {
             navigator.mediaSession.metadata = new MediaMetadata({
-            artist: data?.artist ? data.artist : 'Сашкино радио',
-            title: data?.title ? data.title : '',
+            artist: data?.artist ,
+            title: data?.title ,
             artwork: data?.cover
               ? [{ src: data.cover, sizes: '256x256', type: 'image/jpg' }]
               : [{ src: currentStream.cover }],

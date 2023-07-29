@@ -3,6 +3,7 @@ import styles from './status.module.scss';
 
 const Status = () => {
   const { isLoading, } = usePlayerContext();
+  console.log(isLoading);
 
   return (
     <div className={styles.status}>

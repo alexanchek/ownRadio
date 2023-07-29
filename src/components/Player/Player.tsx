@@ -2,8 +2,6 @@ import { useEffect, useRef } from 'react';
 import { usePlayerContext } from '../../Context';
 import styles from './Player.module.scss';
 
-let interval = 0;
-
 const Player = () => {
   const playerRef = useRef<HTMLAudioElement | null>(null);
 
@@ -12,10 +10,12 @@ const Player = () => {
   useEffect(() => {
     
     if (playerRef.current) {
-      playerRef.current.addEventListener('canplaythrough', () => {
+      if (playerRef.current.readyState === 3) {
         setIsLoading(false);
-        console.log('loaded');
-      });
+      }
+
+      console.log(playerRef.current.readyState)
+
 
       playerRef.current.addEventListener('play', () => {
         setIsPlaying(true);
@@ -26,26 +26,27 @@ const Player = () => {
       });
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [playerRef, setIsLoading])
+  }, [playerRef, setIsLoading, currentStream])
 
   useEffect(() => {
     if (playerRef.current) {
       if (isPlaying && currentStream?.url) {
-        playerRef.current.src = currentStream?.url;
+        playerRef.current.src = currentStream.url;
         playerRef.current.play();
       } else {
         playerRef.current.pause();
+        playerRef.current.src = '';
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isPlaying, playerRef]);
+  }, [isPlaying, playerRef, currentStream]);
 
   useEffect(() => {
     if (currentStream?.url) {
-      playerRef.current!.src = currentStream.url;
+      
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentStream]);
+  }, [isPlaying,currentStream]);
 
   return (
     <audio
