@@ -44,7 +44,7 @@ const getPrevStream = (currentStream: IStream) => {
 }
 
 const ManagedButtons = () => {
-  const { isPlaying, setIsPlaying, currentStream, setCurrentStream, setIsLoading} = usePlayerContext();
+  const { isPlaying, setIsPlaying, currentStream, setCurrentStream, setIsLoading } = usePlayerContext();
 
 
   if ('mediaSession' in navigator) {
@@ -59,15 +59,11 @@ const ManagedButtons = () => {
     });
   }
 
-  const onClickBackward = useCallback(() => {
-    const newStream = getPrevStream(currentStream!);
-    setCurrentStream(newStream);
-    setIsPlaying(true);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentStream]);
+  const onClickPrevNext = useCallback((mode: 'backward' | 'forward') => {
+    let newStream: IStream | null = null;
+    if (mode === 'backward') newStream = getPrevStream(currentStream!);
+    if (mode === 'forward') newStream = getNextStream(currentStream!);
 
-  const onClickForward = useCallback(() => {
-    const newStream = getNextStream(currentStream!);
     setCurrentStream(newStream);
     setIsPlaying(true);
     setIsLoading(true);
@@ -77,7 +73,7 @@ const ManagedButtons = () => {
   return (
     <div className={styles.managedButtonsContainer}>
       <div
-        onClick={onClickBackward}
+        onClick={() => { onClickPrevNext('backward') }}
         className={styles.button}
       >
         <FaBackwardStep size={36} />
@@ -93,7 +89,7 @@ const ManagedButtons = () => {
       </div>
       <div
         className={styles.button}
-        onClick={onClickForward}
+        onClick={() => { onClickPrevNext('forward') }}
       >
         <FaForwardStep size={36} />
       </div>

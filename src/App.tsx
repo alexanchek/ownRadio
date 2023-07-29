@@ -1,18 +1,19 @@
+import { useEffect } from 'react';
+
 // COMPONENTS
 import { HeaderMenu } from './components/HeaderMenu';
 import { ManagedButtons } from './components/ManagedButtons';
 import { TrackInfo } from './components/TrackInfo';
 import { Player } from './components/Player';
-
-import { usePlayerContext } from './Context';
-import { useEffect } from 'react';
-import { streams } from './streams';
-import './App.css';
 import { Status } from './components/Status';
 import { Sidebar } from './components/Sidebar';
+
+import { usePlayerContext } from './Context';
+import { streams } from './streams';
+
 import { localStorageService } from './services/localStorage.service';
 import { disableReactDevTools } from './utils/disableDevTools';
-
+import './App.css';
 
 const App = () => {
   const { setCurrentStream } = usePlayerContext();
