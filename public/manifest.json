@@ -1,6 +1,7 @@
 {
   "short_name": "Sashkino Radio",
   "name": "Sashkino radio",
+  "scope": "https://alexanchek.github.io/ownRadio/",
   "icons": [
     {
       "src": "favicon.ico",
