@@ -1,4 +1,4 @@
-import system from '../../../package.json';
+import system from '../../../../package.json';
 import styles from './Version.module.scss';
 
 const Version = () => {

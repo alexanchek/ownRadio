@@ -5,7 +5,7 @@ import { useOnClickOutside } from 'src/hooks/useOnClickOutside';
 import cn from 'classnames';
 import styles from './Sidebar.module.scss';
 import { SidebarMenu } from './SidebarMenu';
-import { Version } from '../Version';
+import { Version } from './Version';
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
