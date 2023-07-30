@@ -1,10 +1,10 @@
 import axios from "axios";
 
 // INTERFACES
-import { IGelosaTrackInfo } from "../models/radiostreamsData/radioGelosa.interface";
-import { IMaximumTrackInfo } from "../models/radiostreamsData/radioMaximum.interface";
-import { IUltraInfo } from "../models/radiostreamsData/radioUltra.interface";
-import { ISong } from "../models/song.interface";
+import { IGelosaTrackInfo } from "src/models/radiostreamsData/radioGelosa.interface";
+import { IMaximumTrackInfo } from "src/models/radiostreamsData/radioMaximum.interface";
+import { IUltraInfo } from "src/models/radiostreamsData/radioUltra.interface";
+import { ISong } from "src/models/song.interface";
 
 export const getGelosaInfo = async (): Promise<ISong | null> => {
   try {

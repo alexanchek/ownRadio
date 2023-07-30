@@ -1,10 +1,10 @@
 import { Dispatch, FC, SetStateAction, useCallback } from 'react';
-import { usePlayerContext } from '../../../Context';
-import { IStream } from '../../../models/stream.interface';
-import { streams } from '../../../streams';
+import { usePlayerContext } from 'src/Context';
+import { IStream } from 'src/models/stream.interface';
+import { streams } from 'src/streams';
 import cn from 'classnames';
 import styles from './SidebarMenu.module.scss';
-import { localStorageService } from '../../../services/localStorage.service';
+import { localStorageService } from 'src/services/localStorage.service';
 
 const SidebarMenu: FC<{ setIsOpen: Dispatch<SetStateAction<boolean>> }> = ({ setIsOpen, }) => {
   const { setCurrentStream, isPlaying, currentStream, setIsPlaying, setIsLoading } = usePlayerContext();

@@ -1,19 +1,15 @@
 import { useEffect } from 'react';
 
 // COMPONENTS
-import { HeaderMenu } from './components/HeaderMenu';
-import { ManagedButtons } from './components/ManagedButtons';
-import { TrackInfo } from './components/TrackInfo';
-import { Player } from './components/Player';
-import { Status } from './components/Status';
-import { Sidebar } from './components/Sidebar';
+import { Player } from 'src/components/Player';
 
-import { usePlayerContext } from './Context';
-import { streams } from './streams';
+import { usePlayerContext } from 'src/Context';
+import { streams } from 'src/streams';
 
-import { localStorageService } from './services/localStorage.service';
-import { disableReactDevTools } from './utils/disableDevTools';
+import { localStorageService } from 'src/services/localStorage.service';
+import { disableReactDevTools } from 'src/utils/disableDevTools';
 import './App.css';
+
 
 const App = () => {
   const { setCurrentStream } = usePlayerContext();
@@ -36,15 +32,7 @@ const App = () => {
 
   return (
     <div className="App">
-        <Sidebar />
-        <HeaderMenu />
-        <div className="container">
-          <TrackInfo />
-          <ManagedButtons />
-          <Status />
-          <Player />
-        </div>
-
+      <Player />
     </div>
   );
 }

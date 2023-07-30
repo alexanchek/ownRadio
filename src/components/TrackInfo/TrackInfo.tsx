@@ -1,7 +1,7 @@
-import { usePlayerContext } from '../../Context';
+import { usePlayerContext } from 'src/Context';
 import { useEffect, useState } from 'react';
-import { IStream } from '../../models/stream.interface';
-import { ISong } from '../../models/song.interface';
+import { IStream } from 'src/models/stream.interface';
+import { ISong } from 'src/models/song.interface';
 import styles from './TrackInfo.module.scss';
 
 let interval: any = null;

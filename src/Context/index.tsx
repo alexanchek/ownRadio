@@ -1,5 +1,5 @@
 import { createContext, Dispatch, FC, PropsWithChildren, SetStateAction, useContext, useState } from "react";
-import { IStream } from "../models/stream.interface";
+import { IStream } from "src/models/stream.interface";
 
 export interface IPlayerContext {
   isPlaying: boolean;

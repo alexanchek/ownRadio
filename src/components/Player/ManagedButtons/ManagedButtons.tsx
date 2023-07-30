@@ -8,10 +8,10 @@ import {
   FaForwardStep,
 } from 'react-icons/fa6';
 
-import { usePlayerContext } from '../../Context';
-import { streams } from '../../streams';
-import { localStorageService } from '../../services/localStorage.service';
-import { IStream } from '../../models/stream.interface';
+import { usePlayerContext } from 'src/Context';
+import { localStorageService } from 'src/services/localStorage.service';
+import { streams } from 'src/streams';
+import { IStream } from 'src/models/stream.interface';
 
 import styles from './ManagedButtons.module.scss';
 
@@ -85,7 +85,7 @@ const ManagedButtons = () => {
           setIsPlaying(!isPlaying);
         }}>
         {isPlaying && <FaCirclePause size={70} />}
-        {!isPlaying && <FaCirclePlay size={70} />}
+        {!isPlaying && <FaCirclePlay size={70} onClick={() => { setIsLoading(true) }} />}
       </div>
       <div
         className={styles.button}

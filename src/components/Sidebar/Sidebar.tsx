@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import { Hamburger } from './Hamburger';
-import { useOnClickOutside } from '../../hooks/useOnClickOutside';
+import { useOnClickOutside } from 'src/hooks/useOnClickOutside';
 
 import cn from 'classnames';
 import styles from './Sidebar.module.scss';

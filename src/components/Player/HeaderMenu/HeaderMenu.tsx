@@ -1,4 +1,4 @@
-import { usePlayerContext } from '../../Context';
+import { usePlayerContext } from 'src/Context';
 import styles from './HeaderMenu.module.scss';
 
 const HeaderMenu = () => {

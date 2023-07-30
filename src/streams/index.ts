@@ -1,9 +1,9 @@
-import { IStream } from "../models/stream.interface";
+import { IStream } from "src/models/stream.interface";
 
 import radioMaximum from './radioMaximum.jpg';
 import radioUltra from './radioUltra.jpg';
 import radioGelosa from './radioGelosa.jpg';
-import { getGelosaInfo, getMaximumInfo, getUltraInfo } from "../services/trackinfo.service";
+import { getGelosaInfo, getMaximumInfo, getUltraInfo } from "src/services/trackinfo.service";
 
 export const streams: IStream[] = [
   {
