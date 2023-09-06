@@ -17,10 +17,15 @@
 
   &.isOpen {
     left: 15vw;
-
+    
+    @media screen and (max-width: 1200px) {
+      left: 32vw;
+    }
+    
     @media screen and (max-width: 600px) {
       left: 60vw;
     }
+
   }
 
   div {
