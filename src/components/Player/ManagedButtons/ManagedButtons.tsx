@@ -74,22 +74,38 @@ const ManagedButtons = () => {
     <div className={styles.managedButtonsContainer}>
       <div
         onClick={() => { onClickPrevNext('backward') }}
+        onKeyDown={(e) => {
+          if (e.code === 'Enter') onClickPrevNext('backward');
+        }}
         className={styles.button}
+        tabIndex={streams.length + 2}
       >
         <FaBackwardStep size={36} />
       </div>
       <div
+        tabIndex={streams.length + 3}
         className={styles.button}
         onClick={() => {
           if (!isPlaying) setIsLoading(true);
           setIsPlaying(!isPlaying);
-        }}>
+        }}
+        onKeyDown={(e) => {
+          if (e.code === 'Enter') {
+            if (!isPlaying) setIsLoading(true);
+            setIsPlaying(!isPlaying);
+          }
+        }}
+      >
         {isPlaying && <FaCirclePause size={70} />}
         {!isPlaying && <FaCirclePlay size={70} onClick={() => { setIsLoading(true) }} />}
       </div>
       <div
         className={styles.button}
         onClick={() => { onClickPrevNext('forward') }}
+        onKeyDown={(e) => {
+          if (e.code === 'Enter') onClickPrevNext('forward');
+        }}
+        tabIndex={streams.length + 4}
       >
         <FaForwardStep size={36} />
       </div>

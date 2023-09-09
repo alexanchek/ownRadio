@@ -20,7 +20,7 @@ const Sidebar = () => {
         [styles.open]: isOpen,
       })}>
         <div className={styles.menuContainer}>
-        <SidebarMenu setIsOpen={setIsOpen} />
+        <SidebarMenu setIsOpen={setIsOpen} isOpen={isOpen} />
         <Version />
         </div>
       </div>

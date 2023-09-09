@@ -6,7 +6,10 @@ import cn from 'classnames';
 import styles from './SidebarMenu.module.scss';
 import { localStorageService } from 'src/services/localStorage.service';
 
-const SidebarMenu: FC<{ setIsOpen: Dispatch<SetStateAction<boolean>> }> = ({ setIsOpen, }) => {
+const SidebarMenu: FC<{ setIsOpen: Dispatch<SetStateAction<boolean>>, isOpen: boolean }> = ({
+  setIsOpen,
+  isOpen,
+}) => {
   const { setCurrentStream, isPlaying, currentStream, setIsPlaying, setIsLoading } = usePlayerContext();
 
   const onClick = useCallback((stream: IStream) => {
@@ -21,13 +24,19 @@ const SidebarMenu: FC<{ setIsOpen: Dispatch<SetStateAction<boolean>> }> = ({ set
   return (
     <div className={styles.menu}>
       {streams.map(stream => {
+        const idx = streams.findIndex(item => item.name === stream.name);
         return (
           <div
+            tabIndex={isOpen ? idx + 2 : -1}
             className={cn(styles.stream, {
               [styles.active]: stream.name === currentStream?.name,
             })}
             key={stream.name}
-            onClick={(e) => onClick(stream)}>
+            onClick={() => onClick(stream)}
+            onKeyDown={(e) => {
+              if (e.code === 'Enter') onClick(stream);
+            }}
+          >
             {stream.name}
           </div>
         )
