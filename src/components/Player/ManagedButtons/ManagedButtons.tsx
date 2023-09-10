@@ -78,12 +78,12 @@ const ManagedButtons = () => {
           if (e.code === 'Enter') onClickPrevNext('backward');
         }}
         className={styles.button}
-        tabIndex={1}
+        tabIndex={0}
       >
         <FaBackwardStep size={36} />
       </div>
       <div
-        tabIndex={1}
+        tabIndex={0}
         className={styles.button}
         onClick={() => {
           if (!isPlaying) setIsLoading(true);
@@ -105,7 +105,7 @@ const ManagedButtons = () => {
         onKeyDown={(e) => {
           if (e.code === 'Enter') onClickPrevNext('forward');
         }}
-        tabIndex={1}
+        tabIndex={0}
       >
         <FaForwardStep size={36} />
       </div>

@@ -26,7 +26,7 @@ const SidebarMenu: FC<{ setIsOpen: Dispatch<SetStateAction<boolean>>, isOpen: bo
       {streams.map(stream => {
         return (
           <div
-            tabIndex={isOpen ? 1 : -1}
+            tabIndex={isOpen ? 0 : -1}
             className={cn(styles.stream, {
               [styles.active]: stream.name === currentStream?.name,
             })}

@@ -20,7 +20,7 @@ const Hamburger: FC<IHamburger> = ({
       onKeyDown={(e) => {
         if (e.code === 'Enter') setIsOpen(!isOpen)
       }}
-      tabIndex={1}
+      tabIndex={0}
     >
       <div className={cn({
         [styles.first]: isOpen,
