@@ -12,8 +12,12 @@ const SidebarMenu: FC<{ setIsOpen: Dispatch<SetStateAction<boolean>>, isOpen: bo
 }) => {
   const { setCurrentStream, isPlaying, currentStream, setIsPlaying, setIsLoading } = usePlayerContext();
 
-  const onClick = useCallback((stream: IStream) => {
-    setIsOpen(false);
+  const onClick = useCallback((stream: IStream) => { 
+    if (currentStream?.name === stream.name) {
+      setIsOpen(false);
+      return;
+    }
+    
     setCurrentStream(stream);
     localStorageService.setItem(stream.name);
     setIsPlaying(true);
