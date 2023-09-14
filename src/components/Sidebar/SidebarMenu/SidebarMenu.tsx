@@ -18,6 +18,7 @@ const SidebarMenu: FC<{ setIsOpen: Dispatch<SetStateAction<boolean>>, isOpen: bo
       return;
     }
     
+    setIsOpen(false);
     setCurrentStream(stream);
     localStorageService.setItem(stream.name);
     setIsPlaying(true);
