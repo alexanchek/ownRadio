@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/ownRadio/static/css/main.bc39950b.css",
-    "main.js": "/ownRadio/static/js/main.2a5fafb2.js",
+    "main.js": "/ownRadio/static/js/main.d074d598.js",
     "service-worker.js": "/ownRadio/service-worker.js",
     "static/media/radioMaximum.jpg": "/ownRadio/static/media/radioMaximum.7cf2694353669cb2d546.jpg",
     "static/media/radioGelosa.jpg": "/ownRadio/static/media/radioGelosa.f3a32ddd76b8a14ec715.jpg",
@@ -10,6 +10,6 @@
   },
   "entrypoints": [
     "static/css/main.bc39950b.css",
-    "static/js/main.2a5fafb2.js"
+    "static/js/main.d074d598.js"
   ]
 }
