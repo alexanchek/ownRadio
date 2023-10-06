@@ -5,8 +5,8 @@
   left: calc(50% - 200px);
   width: 400px;
   padding-top: 40px;
-  display: none;
-  animation: moveitback 400ms ease forwards;
+  display: block;
+  animation: moveitback 200ms ease forwards;
 
   @media only screen and (max-width: 500px) {
     padding-top: 20px;
@@ -19,7 +19,6 @@
   }
 
   &.visible {
-    display: block;
     animation: moveit 900ms ease forwards;
   }
 }
@@ -27,12 +26,12 @@
 .offlineBox {
   color: black;
   padding: 15px 20px;
-    background: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 6px;
-    flex-direction: column;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  flex-direction: column;
 }
 
 .overlay {
@@ -64,15 +63,33 @@
 }
 
 @keyframes moveit {
-  0% { transform: translateY(0) scale3d(0.96,0.96,1); }
-  20% { transform: translateY(80px) scale3d(1.1,1.1,1); }
-  40% { transform: translateY(50px) scale3d(0.98,0.98,1); }
-  60% { transform: translateY(62px) scale3d(1.05,1.05,1); }
-  80% { transform: translateY(60px) scale3d(1.01,1.01,1); }
-  100% { transform: translateY(60px) scale3d(1,1,1); }
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale3d(0.96, 0.96, 1);
+  }
+  20% {
+    transform: translateY(80px) scale3d(1.1, 1.1, 1);
+  }
+  40% {
+    transform: translateY(50px) scale3d(0.98, 0.98, 1);
+  }
+  60% {
+    transform: translateY(62px) scale3d(1.05, 1.05, 1);
+  }
+  80% {
+    transform: translateY(60px) scale3d(1.01, 1.01, 1);
+  }
+  100% {
+    transform: translateY(60px) scale3d(1, 1, 1);
+  }
 }
 
 @keyframes moveitback {
-  0% { transform: translateY(60px); }
-  100% { transform: translateY(0) scale3d(0.96,0.96,1); }
+  0% {
+    transform: translateY(60px);
+  }
+  100% {
+    transform: translateY(0) scale3d(0.96, 0.96, 1);
+    opacity: 0;
+  }
 }
