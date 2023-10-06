@@ -46,14 +46,14 @@ const TrackInfo = () => {
         getTitle();
       }, 5000);
 
-      if ("mediaSession" in navigator) {
-        navigator.mediaSession.metadata = new MediaMetadata({
-          artist: 'Сашкино радио',
-          title: '',
-          album: '',
-          artwork: [{ src: currentStream!.cover }],
-        });
-      }
+      // if ("mediaSession" in navigator) {
+      //   navigator.mediaSession.metadata = new MediaMetadata({
+      //     artist: 'Сашкино радио',
+      //     title: '',
+      //     album: '',
+      //     artwork: [{ src: currentStream!.cover }],
+      //   });
+      // }
     }
   }, [currentStream, intervalStream]);
 

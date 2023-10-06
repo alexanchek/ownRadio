@@ -8,12 +8,12 @@ const Status = () => {
     <div className={styles.status}>
       {isLoading
         ? (<div className={styles.ldsRing}>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
+          <div />
+          <div />
+          <div />
+          <div />
         </div>)
-        : ''}
+        : null}
     </div>
   );
 };
