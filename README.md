@@ -1,5 +1,7 @@
 # 📻  ownRadio (React).
 
+[DEMO](https://alexanchek.github.io/ownRadio// "Demo of Own Radio")
+
 I needed a flexible, lightweight app for various platforms to listen to my personally selected radio streams without additional features like alarms, recommendations, favorite lists, recording from streams, searching for new streams, and so on. Finally, I decided to conduct a small experiment and create a PWA.
 
  ## 🚀 Installation
