@@ -1,22 +1,17 @@
-import { Sidebar } from '../Sidebar';
 import { Status } from './Status';
 import { TrackInfo } from './TrackInfo';
 import { AudioElement } from './AudioElement';
-import { HeaderMenu } from './HeaderMenu';
 import { ManagedButtons } from './ManagedButtons';
+import styles from './Player.module.scss';
 
 const Player = () => {
   return (
-    <>
-      <Sidebar />
-        <HeaderMenu />
-        <div className="container">
-          <TrackInfo />
-          <ManagedButtons />
-          <Status />
-          <AudioElement />
-        </div> 
-    </>
+    <div className={styles.container}>
+      <TrackInfo />
+      <ManagedButtons />
+      <Status />
+      <AudioElement />
+    </div>
   );
 };
 
